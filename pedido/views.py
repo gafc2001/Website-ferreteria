@@ -32,5 +32,4 @@ def compra(request):
 
     json_data = respuesta['data']
     diccionario = json.loads(json_data)
-    diccionario.
     return render(request,'compra.html',{'data':diccionario['1']})
