@@ -4,8 +4,9 @@ document.addEventListener('DOMContentLoaded',function(){
     const cartButton = document.getElementById('cart-icon');
     const cart = document.getElementById('cart');
     const listCart = document.getElementById('list-cart');
-    const buyButton = document.getElementById('buy-button');
+    const buyButton = document.getElementById('button-cart');
     const addCart = document.getElementsByClassName('add-cart');
+    const inputData = document.getElementById('data');
 
     //Abrir carrito
     let state = false;
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded',function(){
             let id = addCart[i].getAttribute('data-id');
             let totalElement = document.getElementById('total');
             total++;
-            //Si no existe el producto
+            //Si no existe el producto en (idProducts)
             if(!idProducts[id]){
                 idProducts[id] = 1;
                 let elements = addCart[i].parentElement.children
@@ -39,30 +40,27 @@ document.addEventListener('DOMContentLoaded',function(){
                 let productPrice = elements[2].textContent
                 
                 let productCart = `
-                <div class="product-cart">
-                <p id="quantity" class="quantity">${idProducts[id]}</p>
-                <div class="cart-image">
-                <img src='${imgSource}' alt="">
-                </div>
-                <p class="product-name" data-id=${id}>${productName}</p>
-                <p class="product-price">${productPrice}</p>
-                </div>
+                    <div class="product-cart" id=${id}>
+                        <p class="quantity">${idProducts[id]}</p>
+                        <div class="cart-image">
+                        <img src='${imgSource}' alt="">
+                        </div>
+                        <p class="product-name" >${productName}</p>
+                        <p class="product-price">${productPrice}</p>
+                    </div>
                 `
                 listCart.innerHTML = listCart.innerHTML + productCart
             }else{
                 idProducts[id] = idProducts[id]+1;
-                let quant = document.getElementById('quantity');
+                let productElement = document.getElementById(id);
+                let quant = productElement.childNodes[1]
                 quant.innerHTML = idProducts[id]
             }
             totalElement.style.display = "block"
             totalElement.innerText = total
-            console.log(idProducts)
-            
-            
-            
+            inputData.value =JSON.stringify(idProducts);
         })
     }
     
-
 
 })

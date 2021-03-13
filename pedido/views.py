@@ -1,6 +1,8 @@
 from pedido import models
 from django.shortcuts import render
+from django.http import HttpResponse
 from pedido.models import *
+import json
 
 def listar_pedido(request):
     
@@ -24,3 +26,11 @@ def detalles(request,id):
 
 
     return render(request,'detalles.html',{'details':details,'pedido':pedido})
+
+def compra(request):
+    data = request.POST
+    stringJson = data['data']
+    print(stringJson)
+    print(type(stringJson))
+    # diccionario = 
+    return render(request,'compra.html',{'pedido':stringJson})

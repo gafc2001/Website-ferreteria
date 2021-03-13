@@ -29,7 +29,12 @@
                     <div class="list-cart" id="list-cart">
                         
                     </div>
-                    <div class="button-cart button" id="button-cart">Realizar compra <i class="fas fa-shopping-basket"></i></div>
+                    <form action="{% url 'compra'%}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" id="data" name="data" value="">
+                        <input type="submit" class="button button-cart" value="Realizar compra">
+
+                    </form>
                 </div>
             </div>
         </div>

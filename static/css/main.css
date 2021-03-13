@@ -119,7 +119,12 @@ img{
     font-size: 1.6em;
     text-align: center;
     border-radius: 100px;
+    appearance: unset;
+    border: none;
+    width: 100%;
 }
+
+
 .list-cart{
     display: flex;
     flex-direction: column;
@@ -197,6 +202,7 @@ img{
     border-radius: 100px;
     padding: 1rem 2rem;
     font-size: 1.8rem;
+    user-select: none
 }
 
 /*===== Pedidos =====*/
