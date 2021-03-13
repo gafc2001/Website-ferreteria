@@ -12,6 +12,7 @@ body{
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
+    overflow-x: hidden;
 }
 h1,h2,h3,h4,h5{
     margin: 0;
@@ -207,7 +208,7 @@ img{
 
 /*===== Pedidos =====*/
 .content{
-    width: 700px;
+    width: 800px;
     background-color: #fff;
     padding: 2rem 3rem;
     box-shadow: 12px 14px 14px -15px rgb(102, 102, 102);

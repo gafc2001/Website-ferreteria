@@ -31,9 +31,8 @@
                     </div>
                     <form action="{% url 'compra'%}" method="POST">
                         {% csrf_token %}
-                        <input type="hidden" id="data" name="data" value="{'name':'gustavo','age':'19'}">
-                        <input type="submit" class="button button-cart" value="Realizar compra">
-
+                        <input type="hidden" id="data" name="data" value="">
+                        <input type="submit" disabled class="button button-cart" id="button-cart" value="Realizar compra">
                     </form>
                 </div>
             </div>

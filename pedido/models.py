@@ -13,6 +13,8 @@ class Producto(models.Model):
 
     categoria = models.CharField(max_length=20)
 
+    img = models.CharField(max_length=30)
+
 
 class Usuario(models.Model):
 
@@ -45,4 +47,5 @@ class Pedido_detalle(models.Model):
     monto = models.IntegerField()
 
     id_usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE)
+
 

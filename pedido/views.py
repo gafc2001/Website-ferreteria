@@ -14,7 +14,9 @@ def listar_pedido(request):
 
 
 def home(request):
-    return render(request,'index.html')
+    
+    productos = Producto.objects.all()
+    return render(request,'index.html',{'productos':productos})
 
 def detalles(request,id):
     
@@ -30,7 +32,29 @@ def detalles(request,id):
 def compra(request):
     respuesta = request.POST
 
-    json_data = respuesta['data']
-    diccionario = json.loads(json_data)
-    diccionario.
-    return render(request,'compra.html',{'data':diccionario['1']})
+    response_data = respuesta['data']
+    arreglo = response_data.split('},')
+    pedidos = []
+    for element in arreglo:
+        if (element[-1] != '}'):
+            element = element + '}'
+        pedidos.append(json.loads(element))
+    
+    total = 0
+    for producto in pedidos:
+        query_producto = Producto.objects.get(id = producto['id'])
+        producto['nombre_producto'] = query_producto.nombre_producto
+        producto['precio_unitario'] = query_producto.precio_unitario
+        producto['descripcion'] = query_producto.descripcion
+        producto['monto'] = producto['precio_unitario'] * producto['cant']
+        producto['img'] = query_producto.img
+        total += producto['monto']
+        #Reduciendo el stock
+        #query_producto.stock = int(query_producto.stock) - producto.cant
+        
+
+
+    return render(request,'compra.html',{'pedidos':pedidos,'total':total})
+
+
+        
