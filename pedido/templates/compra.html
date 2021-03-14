@@ -39,6 +39,18 @@
                 </tr>
 
             </table>
+            <form action="{% url 'envio'%}" method="POST">
+                {% csrf_token %}
+
+                {% if mensaje %}
+                <div class="alert alert-success" role="alert">
+                    Pedido finalizado con exito
+                </div>
+                {% endif %}
+                
+                <input type="hidden" id="data" name="data" value="{{pedidos}}">
+                <button type="submit" class="button button-cart" >Finalizar Compra</button>
+            </form>
         </div>
     </div>
 </main>

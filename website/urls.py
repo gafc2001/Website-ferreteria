@@ -26,5 +26,5 @@ urlpatterns = [
     path('pedido/detalles/<int:id>',views.detalles, name='detalles'),
     path('',views.home,name='home'),
     path('compra/',views.compra,name='compra'),
-    
+    path('envio/',views.envio,name='envio'),   
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
