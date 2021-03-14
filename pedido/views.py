@@ -51,16 +51,38 @@ def compra(request):
         total += producto['monto']
         #Reduciendo el stock
         #query_producto.stock = int(query_producto.stock) - producto.cant
-    print(total)
-    return render(request,'compra.html',{'pedidos':pedidos,'total':total,'cantidad':producto['cant']})
+
+    formatPedidos = str(pedidos)[1:-1]
+    
+    return render(request,'compra.html',{'pedidos':pedidos,'strPedidos':formatPedidos,'total':total})
 
 def envio(request):
     respuesta = request.POST
-    cantidad = respuesta['cantidad']
-    total = respuesta['monto']
-
-    Pedidos.objects.create( numero_pedido=cantidad,monto=total,estado="NO ENTREGADO")
+    data = respuesta['data'].replace("\'",'\"')
+    arreglo = data.split("},")
+    pedidos = []
+    for element in arreglo:
+        if (element[-1]!="}"):
+            element = element + '}'
+        pedidos.append(json.loads(element))
     
+        
+    total = respuesta['monto']
+    
+
+    pedido = Pedidos.objects.create( numero_pedido='3',monto=total,estado="NO ENTREGADO")
+
+
+    
+    for pedido_detalle in pedidos:
+        data = {
+            'cantidad':pedido_detalle['cant'],
+            'monto': pedido_detalle['monto'],
+            'id_pedido_id' : pedido.id,
+            'id_producto_id': pedido_detalle['id'],
+            'id_usuario_id' : 1
+        }
+        detalles = Pedido_detalle.objects.create(**data)
     
     return render(request,'compra.html',{"mensaje":'OK'})
         

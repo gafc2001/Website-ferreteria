@@ -5,6 +5,9 @@
         <div class="detail-content">
             
             <h2>Resumen de compra</h2>
+            {{data1}}
+            <br>
+            {{data}}
             <table class="detail-table">
 
                 <tr class="detail-header">
@@ -47,8 +50,10 @@
                     Pedido finalizado con exito
                 </div>
                 {% endif %}
-                <input type="hidden" id="data" name="cantidad" value="{{cantidad}}">
-                <input type="hidden" id="data" name="monto" value="{{total}}">
+                
+                <input type="hidden" id="data" name="data" value="{{strPedidos}}">
+                <input type="hidden" id="cantidad" name="cantidad" value="{{cantidad}}">
+                <input type="hidden" id="monto" name="monto" value="{{total}}">
                 <button type="submit" class="button button-cart" >Finalizar Compra</button>
             </form>
         </div>
