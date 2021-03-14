@@ -52,7 +52,7 @@ def compra(request):
         #Reduciendo el stock
         #query_producto.stock = int(query_producto.stock) - producto.cant
     print(total)
-    return render(request,'compra.html',{'pedidos':pedidos,'total':total,'cantidad':producto['cant'],'monto':total})
+    return render(request,'compra.html',{'pedidos':pedidos,'total':total,'cantidad':producto['cant']})
 
 def envio(request):
     respuesta = request.POST
