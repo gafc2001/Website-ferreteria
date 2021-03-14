@@ -7,8 +7,6 @@ import json
 def listar_pedido(request):
     
     pedido = Pedidos.objects.all()
-    
-    
 
     return render(request,'pedido.html',{'data':pedido})
 
@@ -21,9 +19,10 @@ def home(request):
 def detalles(request,id):
     
 
-    details = Pedido_detalle.objects.filter(id_pedido_id= int(id))
+    details = Pedido_detalle.objects.filter(id_pedido_id= id)
     pedido = Pedidos.objects.get(id=id)
     for detail in details:
+        
         detail.id_producto_id = Producto.objects.get(id=detail.id_producto_id)
 
 
@@ -69,11 +68,11 @@ def envio(request):
         
     total = respuesta['monto']
     
-
+    #Guardando pedido
     pedido = Pedidos.objects.create( numero_pedido='3',monto=total,estado="NO ENTREGADO")
 
 
-    
+    #Guardando detalles
     for pedido_detalle in pedidos:
         data = {
             'cantidad':pedido_detalle['cant'],
