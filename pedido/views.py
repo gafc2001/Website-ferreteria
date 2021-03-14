@@ -78,6 +78,7 @@ def envio(request):
 #    if form.is_valid():
 #      form.save()
 #      return redirect('detalles')
+# cambio
     
     return render(request,'compra.html',{"mensaje":'OK'})
         
