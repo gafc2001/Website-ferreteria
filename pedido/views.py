@@ -49,7 +49,7 @@ def compra(request):
         producto['monto'] = producto['precio_unitario'] * producto['cant']
         producto['img'] = query_producto.img
         total += producto['monto']
-        #Reduciendo el stock
+        #Reduciendo el stock, 
         #query_producto.stock = int(query_producto.stock) - producto.cant
         
 
