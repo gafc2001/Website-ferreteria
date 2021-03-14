@@ -49,12 +49,18 @@ def compra(request):
         producto['monto'] = producto['precio_unitario'] * producto['cant']
         producto['img'] = query_producto.img
         total += producto['monto']
-        #Reduciendo el stock, 
+        #Reduciendo el stock
         #query_producto.stock = int(query_producto.stock) - producto.cant
-        
+    print(total)
+    return render(request,'compra.html',{'pedidos':pedidos,'total':total,'cantidad':producto['cant'],'monto':total})
 
+def envio(request):
+    respuesta = request.POST
+    cantidad = respuesta['cantidad']
+    total = respuesta['monto']
 
-    return render(request,'compra.html',{'pedidos':pedidos,'total':total})
-
-
+    Pedidos.objects.create( numero_pedido=cantidad,monto=total,estado="NO ENTREGADO")
+    
+    
+    return render(request,'compra.html',{"mensaje":'OK'})
         
