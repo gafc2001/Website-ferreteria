@@ -1,0 +1,40 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<header class="main-header">
+        <div class="container">
+            <div class="content-header">
+                <div class="title">
+                    <img src="{% static 'img/logo.png' %}" alt="logo">
+                    <h1>El Tornillo Feliz</h1>
+                </div>
+                <div>
+                    <ul class="header-options">
+                        <li class="cart-icon button" id="cart-icon"><i class="fas fa-shopping-cart"></i>   Carrito <p class="total" id="total"></p> </li>
+                        <a href="{% url 'pedido' %}"><li class="button"><i class="fas fa-shopping-bag"></i> Mis compras</li></a>
+                        <li class="button"><i class="fas fa-user"></i> Log in</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cart" id="cart">
+                <div class="content-cart">
+                    <div class="list-cart" id="list-cart">
+                        
+                    </div>
+                    <form action="{% url 'compra'%}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" id="data" name="data" value="">
+                        <input type="submit" disabled class="button button-cart" id="button-cart" value="Realizar compra">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>

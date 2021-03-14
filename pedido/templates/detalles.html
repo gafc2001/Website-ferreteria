@@ -1,0 +1,44 @@
+{% include 'includes/header.html' %}
+{% load static%}
+<main class="main">
+    <div class="container content">
+        <div class="detail-content">
+            
+            <h2>Resumen de compra {{id}}</h2>
+            <table class="detail-table">
+
+                <tr class="detail-header">
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Monto</th>
+                </tr>
+                {% for detail in details%}
+                <tr class="detail-info">
+                    <td class="detail-name">
+                        <div class="detail-image">
+                            <img src="{% static 'img/alicate.jpg' %}" alt="">
+                        </div>
+                        <span>
+                           {{ detail.id_producto_id.nombre_producto}}
+                        </span>
+                    </td>
+                    <td>{{detail.id_producto_id.descripcion}}</td>
+                    <td>{{detail.cantidad}}</td>
+                    <td>{{detail.monto}}</td>
+                </tr>
+                {% endfor %}
+                
+                
+
+                <tr class="detail-info">
+                    <td colspan="3"></td>
+                    <td>{{pedido.monto}}</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</main>
+
+{% include 'includes/footer.html' %}

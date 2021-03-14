@@ -1,0 +1,26 @@
+{% load static %} 
+{% include 'includes/header.html'%}
+    <main class="main">
+        <div class="container">
+            <div class="productlist">
+                {% for producto in productos%}
+                <div class="product">
+                    <div class="product-image">
+                        <img src="{% static 'img/'|add:producto.img %}" alt="">
+                    </div>
+                    <p class="product-name">{{producto.nombre_producto}}</p>
+                    <p class="product-price">$ {{producto.precio_unitario}}</p>
+                    <div class="add-cart button" data-id="{{producto.id}}">
+                        Agregar al carrito
+                    </div>
+                </div>
+                {% endfor%}
+                
+            
+                
+            </div><!--Produclist-->
+        </div><!--Container-->
+    </main>
+    
+    
+{% include 'includes/footer.html'%}
