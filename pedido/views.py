@@ -6,21 +6,26 @@ from django.http import HttpResponse, response
 from django.contrib.auth.hashers import make_password
 from pedido.models import *
 import json
-
-def listar_pedido(request):
-    
-    pedido = Pedidos.objects.all()
-
-    return render(request,'pedido.html',{'data':pedido})
-
+import random
 
 def home(request):
     
     productos = Producto.objects.all()
     return render(request,'index.html',{'productos':productos})
 
-def detalles(request,id):
+def listar_pedido(request):
     
+    id = request.session['id']
+    pedido = ''
+    msg = ''
+    try:
+        pedido = Pedidos.objects.filter(id_usuario_id = id)
+    except:
+        msg = "No tienes pedidos aún, compra con nosotros Yaaaa!" 
+    return render(request,'pedido.html',{'data':pedido,'msg':msg})
+
+
+def detalles(request,id):
 
     details = Pedido_detalle.objects.filter(id_pedido_id= id)
     pedido = Pedidos.objects.get(id=id)
@@ -69,9 +74,11 @@ def envio(request):
     
         
     total = respuesta['monto']
-    
+    id = request.session['id']
     #Guardando pedido
-    pedido = Pedidos.objects.create( numero_pedido='3',monto=total,estado="NO ENTREGADO")
+    
+    numPedido = random.randint(100000,999999)
+    pedido = Pedidos.objects.create( numero_pedido=str(numPedido),monto=total,estado="NO ENTREGADO",id_usuario_id = id )
 
 
     #Guardando detalles
@@ -81,7 +88,6 @@ def envio(request):
             'monto': pedido_detalle['monto'],
             'id_pedido_id' : pedido.id,
             'id_producto_id': pedido_detalle['id'],
-            'id_usuario_id' : 1
         }
         detalles = Pedido_detalle.objects.create(**data)
     
@@ -129,3 +135,9 @@ def registrarUsuario(request):
     else:
         return render(request, 'registroUsuario.html', {'mensaje': 'Error al registrar'})
         
+def close_session(request,msg):
+    if(msg == 'close'):
+        del request.session['id']
+        del request.session['username']
+        del request.session['nombre']
+        return redirect('home')

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Producto(models.Model):
@@ -36,6 +37,8 @@ class Pedidos(models.Model):
 
     estado = models.CharField(max_length=20)
 
+    id_usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+
 class Pedido_detalle(models.Model):
 
     id_pedido = models.ForeignKey(Pedidos,on_delete=models.CASCADE)
@@ -46,6 +49,6 @@ class Pedido_detalle(models.Model):
 
     monto = models.IntegerField()
 
-    id_usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE)
+    
 
 

@@ -5,20 +5,25 @@
         <div class="container content order-content ">
             <h2>Mis pedidos</h2>
             <ul class="order-list">
-                {% for item in data%}
-                <li class="order-item">
-                    <h3>{{item.estado}}</h3>
-                    <p>{{item.fecha_pedido}} </p>
-                    <div class="order-description">
-                        <img src="{% static 'img/box.png' %}" alt="">
-                        <div class="order-details">
-                            <p class="product-name">{{ data.detalles.id_producto_id.nombre_producto}}</p>
-                            <p class="product-price">S/ {{item.monto}}</p> 
-                            <a href="{% url 'detalles' id=item.id%}" class="order-detail">Ver mas detalles <i class="fas fa-info"></i></a>
-                        </div>
-                    </div>
-                </li>
-                {% endfor%}
+                {% if data%}
+                    {% for item in data%}
+                        <li class="order-item">
+                            <h3>{{item.estado}}</h3>
+                            <p>{{item.fecha_pedido}} </p>
+                            <div class="order-description">
+                                <img src="{% static 'img/box.png' %}" alt="">
+                                <div class="order-details">
+                                    <p class="product-name">{{ data.detalles.id_producto_id.nombre_producto}}</p>
+                                    <p class="product-price">S/ {{item.monto}}</p> 
+                                    <a href="{% url 'detalles' id=item.id%}" class="order-detail">Ver mas detalles <i class="fas fa-info"></i></a>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor%}
+                {% else %}
+                    {{data}}
+                    <h3>{{msg}}</h3>
+                {% endif %}
             </ul>
         </div>
     </main>

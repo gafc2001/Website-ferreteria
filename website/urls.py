@@ -25,11 +25,13 @@ urlpatterns = [
     path('pedido/',views.listar_pedido,name='pedido'),
     path('pedido/detalles/<int:id>',views.detalles, name='detalles'),
     path('',views.home,name='home'),
+    path('',views.home,name='home'),
     path('compra/',views.compra,name='compra'),
     path('envio/',views.envio,name='envio'),
-    
+
     path('wlogin/', views.iniciarSesionView, name='wlogin'),
     path('wregistrarUsuario/', views.registrarUsuarioView, name='wregistrarUsuario'),
     path('registrarUsuario/', views.registrarUsuario, name='registrarUsuario'),
     path('login/', views.procesarLogin, name='login'), 
+    path('<str:msg>',views.close_session,name='close'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
