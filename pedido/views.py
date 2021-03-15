@@ -1,6 +1,9 @@
 from pedido import models
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from django.shortcuts import redirect, render
 from django.http import HttpResponse, response
+from django.contrib.auth.hashers import make_password
 from pedido.models import *
 import json
 
@@ -83,4 +86,46 @@ def envio(request):
         detalles = Pedido_detalle.objects.create(**data)
     
     return render(request,'compra.html',{"mensaje":'OK'})
+
+def iniciarSesionView(request):
+    return render(request, 'login.html')
+
+
+def procesarLogin(request):
+    form = request.POST
+    usuario = form['user']
+    password = form['password']
+    user = authenticate(username=usuario, password=password)
+
+    if (user is not None):
+        request.session['id'] = user.id
+        request.session['username'] = user.username
+        request.session['nombre'] = user.first_name
+        return redirect('home')
+    else:
+        return render(request, 'login.html', {'mensaje': 'Credenciales inválidas'})
+
+
+def registrarUsuarioView(request):
+    return render(request, 'registroUsuario.html')
+
+
+def registrarUsuario(request):
+    form = request.POST
+    usuario = form['user']
+    password = form['password']
+    nombre = form['nombre']
+    correo = form['correo']
+
+    user = User.objects.create(
+        username=usuario, email=correo, password=make_password(password), first_name=nombre)
+    
+    if (user is not None):
+        request.session['id'] = user.id
+        request.session['username'] = user.username
+        request.session['nombre'] = user.first_name
+        return redirect('home')
+        
+    else:
+        return render(request, 'registroUsuario.html', {'mensaje': 'Error al registrar'})
         

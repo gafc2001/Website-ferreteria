@@ -18,9 +18,19 @@
                 </div>
                 <div>
                     <ul class="header-options">
+                        {% if request.session.id%}
+                            {{request.session}}
                         <li class="cart-icon button" id="cart-icon"><i class="fas fa-shopping-cart"></i>   Carrito <p class="total" id="total"></p> </li>
-                        <a href="{% url 'pedido' %}"><li class="button"><i class="fas fa-shopping-bag"></i> Mis compras</li></a>
-                        <li class="button"><i class="fas fa-user"></i> Log in</li>
+                        <a href="{% url 'pedido' %}">
+                            <li class="button"><i class="fas fa-shopping-bag"></i> Mis compras</li>
+                        </a>
+                        {% endif%}
+                        <a href="{% url 'wlogin' %}">
+                            <li class="button"><i class="fas fa-user"></i> Log in</li>
+                        </a>
+                        <a href="{% url 'wregistrarUsuario' %}">
+                            <li class="button"><i class="fas fa-user-plus"></i> Registrarme</li>
+                        </a>
                     </ul>
                 </div>
             </div>

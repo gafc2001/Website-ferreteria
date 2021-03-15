@@ -1,0 +1,47 @@
+{% include 'includes/header.html' %}
+{% load static%}
+<main class="main">
+   <div class="container content">
+      <div class="detail-content">
+
+         <h2>Iniciar Sesión</h2>
+         <form action="{% url 'registrarUsuario'%}" method="POST">
+            {% csrf_token %}
+            Usuario
+            <input type="text" id="txtUsuario" name="user">
+            <br /><br/>
+            Contraseña
+            <input type="password" id="txtContrasena" name="password">
+            <br /><br/>
+            Nombre
+            <input type="text" id="txtContrasena" name="nombre">
+            <br /><br/>
+            Correo
+            <input type="text" id="txtContrasena" name="correo">
+            <br/><br/>
+            <button type="submit" class="btn">Registrarme</button>
+
+            <br/><br/>
+            {{mensaje}}
+            <!-- <table class="detail-table">
+               <tr class="detail-info">
+                  <td>Usuario</td>
+                  <td><input type="text" id="txtUsuario"></td>
+               </tr>
+               <tr class="detail-info">
+                  <td>Contraseña</td>
+                  <td><input type="password" id="txtContrasena"></td>
+               </tr>
+               <tr class="detail-info">
+                  <td colspan="2"><span id="lblMensaje"></span></td>
+               </tr>
+               <tr class="detail-info">
+                  <td colspan="2"><button type="submit" class="btn">Ingresar</button></td>
+               </tr>
+            </table> -->
+         </form>
+      </div>
+   </div>
+</main>
+
+{% include 'includes/footer.html' %}
