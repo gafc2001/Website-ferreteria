@@ -22,7 +22,6 @@ def detalles(request,id):
     details = Pedido_detalle.objects.filter(id_pedido_id= id)
     pedido = Pedidos.objects.get(id=id)
     for detail in details:
-        
         detail.id_producto_id = Producto.objects.get(id=detail.id_producto_id)
 
 
