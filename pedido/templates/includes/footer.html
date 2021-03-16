@@ -1,6 +1,11 @@
 {% load static%}
-    
+
 <script src="https://kit.fontawesome.com/0dadf959e1.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/scripts.js' %}"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger intent="WELCOME" chat-title="Pedidos" agent-id="9e310ec7-58fb-4834-bc90-616e80bd2908" language-code="en">
+</df-messenger>
 </body>
+
 </html>

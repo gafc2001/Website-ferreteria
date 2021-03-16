@@ -33,5 +33,6 @@ urlpatterns = [
     path('wregistrarUsuario/', views.registrarUsuarioView, name='wregistrarUsuario'),
     path('registrarUsuario/', views.registrarUsuario, name='registrarUsuario'),
     path('login/', views.procesarLogin, name='login'), 
+    path('chat/', views.chatView, name='chat'), 
     path('<str:msg>',views.close_session,name='close'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
