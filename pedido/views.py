@@ -91,7 +91,8 @@ def envio(request):
         }
         detalles = Pedido_detalle.objects.create(**data)
     
-    return render(request,'compra.html',{"mensaje":'OK'})
+    
+    return redirect('pedido')
 
 def iniciarSesionView(request):
     return render(request, 'login.html')

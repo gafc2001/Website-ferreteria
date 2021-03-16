@@ -13,6 +13,9 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
     overflow-x: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 h1,h2,h3,h4,h5{
     margin: 0;
@@ -170,6 +173,7 @@ img{
 .main{
     background-color: rgb(235, 234, 233);
     padding: 5rem 0;
+    flex: 1;
 }
 .productlist{
     display: grid;
