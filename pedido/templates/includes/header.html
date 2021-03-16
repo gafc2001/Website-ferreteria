@@ -13,8 +13,10 @@
         <div class="container">
             <div class="content-header">
                 <div class="title">
-                    <img src="{% static 'img/logo.png' %}" alt="logo">
-                    <h1>El Tornillo Feliz</h1>
+                    <a href="{% url 'home' %}" class="home-link">
+                        <img src="{% static 'img/logo.png' %}" alt="logo">
+                        <h1>El Tornillo Feliz</h1>
+                    </a>
                 </div>
                 <div>
                     <ul class="header-options">

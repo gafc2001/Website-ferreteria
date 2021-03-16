@@ -1,28 +1,37 @@
 {% include 'includes/header.html' %}
 {% load static%}
 <main class="main">
-   <div class="container content">
+   <div class="container form-content">
       <div class="detail-content">
 
          <h2>Iniciar Sesión</h2>
          <form action="{% url 'registrarUsuario'%}" method="POST">
             {% csrf_token %}
-            Usuario
-            <input type="text" id="txtUsuario" name="user">
-            <br /><br/>
-            Contraseña
-            <input type="password" id="txtContrasena" name="password">
-            <br /><br/>
-            Nombre
-            <input type="text" id="txtContrasena" name="nombre">
-            <br /><br/>
-            Correo
-            <input type="text" id="txtContrasena" name="correo">
-            <br/><br/>
-            <button type="submit" class="btn">Registrarme</button>
-
-            <br/><br/>
-            {{mensaje}}
+            <div class="campo">
+               <label for="txtUsuario">Usuario</label>
+               <input type="text" id="txtUsuario" name="user">
+            </div>
+            <div class="campo">
+               <label for="">Contraseña</label>
+               <input type="password" id="txtContrasena" name="password">
+            </div>
+            <div class="campo">
+               <label for="txtContrasena">Nombre</label>
+               <input type="text" id="txtContrasena" name="nombre">
+            </div>   
+            <div class="campo">
+               <label for="txtCorreo">Correo</label>
+               <input type="text" id="txtCorreo" name="correo">
+            </div>
+            <div class="buttons">
+               <a  href="{% url 'home'%}" class="btn-form btn-red">Cancelar</a>
+               <button type="submit" class="btn-form btn-green">Ingresar</button>
+            </div>
+            {% if mensaje%}
+               <div class="msg">
+                  {{mensaje}}
+               </div>
+            {% endif %}
             <!-- <table class="detail-table">
                <tr class="detail-info">
                   <td>Usuario</td>

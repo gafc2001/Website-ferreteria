@@ -1,23 +1,29 @@
 {% include 'includes/header.html' %}
 {% load static%}
 <main class="main">
-   <div class="container content">
+   <div class="container form-content">
       <div class="detail-content">
 
          <h2>Iniciar Sesión</h2>
-         <form action="{% url 'login'%}" method="POST">
+         <form action="{% url 'login'%}" method="POST" class="form">
             {% csrf_token %}
-            Usuario
-            <input type="text" id="txtUsuario" name="user">
-            <br/>
-            <br />
-            Contraseña
-            <input type="password" id="txtContrasena" name="password">
-            <br/><br/>
-            <button type="submit" class="btn">Ingresar</button>
-            
-            <br/><br/>
-            {{mensaje}}
+            <div class="campo">  
+               <label for="txtUsuario">Usuario</label> 
+               <input type="text" id="txtUsuario" name="user">
+            </div>
+            <div class="campo">
+               <label for="txtContrasena">Contraseña</label>
+               <input type="password" id="txtContrasena" name="password">
+            </div>
+            <div class="buttons">
+               <a  href="{% url 'home'%}" class="btn-form btn-red">cancelar</a>
+               <button type="submit" class="btn-form btn-green">Ingresar</button>
+            </div>
+            {% if mensaje%}
+               <div class="msg">
+                  {{mensaje}}
+               </div>
+            {% endif %}
             <!-- <table class="detail-table">
                <tr class="detail-info">
                   <td>Usuario</td>

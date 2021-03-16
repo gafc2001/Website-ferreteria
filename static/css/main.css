@@ -44,6 +44,7 @@ img{
 .button:hover{
     cursor: pointer;
 }
+
 /*========== Header ============*/
 .main-header{
     background-color: rgb(253, 183, 0);
@@ -60,9 +61,11 @@ img{
     padding: 1rem 0;
     font-weight: 100;
 }
-.title{
-    display: flex;
+.home-link{
     align-items: center;
+    display: flex;
+    height: 100%;
+    width: 300px;
 }
 .header-options{
     list-style: none;
@@ -282,4 +285,79 @@ img{
 }
 .detail-image{
     height: 50px;
+}
+/* ===== Formulario ====*/
+.form-content{
+    width: 600px;
+    background-color: #fff;
+    padding: 2rem 3rem;
+    box-shadow: 12px 14px 14px -15px rgb(102, 102, 102);
+}
+.form-content h2{
+    font-size: 2.8rem;
+    margin: 1rem 0 2rem 0;
+}
+.form{
+    font-size: 1.4em;
+}
+.campo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 6rem;
+    margin-bottom: 2.2rem;
+}
+.campo input{
+    height: 3rem;
+    appearance: unset;
+    border-radius: 15px;
+    background: rgb(236, 236, 236);
+    border: none;
+    padding: 1rem 2rem;
+}
+.campo input:focus{
+    outline-offset:unset;
+    outline: unset;
+}
+.buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.btn-form{
+    appearance: unset;
+    border: none;
+    padding: .7rem 3rem;
+    border-radius: 15px;
+    font-size: 1.8rem;
+    text-transform: capitalize;
+}
+.btn-form:focus{
+    outline-offset:unset;
+    outline: unset;
+}
+.btn-red{
+    color: #842029;
+    border: 1px solid #842029;
+    transition: .3s;
+}
+.btn-red:hover{
+    background-color: #F8D7DA;
+    color: #842029;
+    border: 1px solid #842029;
+}
+.btn-green{
+    background-color: #D1E7DD;
+    color: #0F5132;
+    border: 1px solid #0F5132;
+}
+.msg{
+    background-color: #F8D7DA;
+    color: #842029;
+    border: 1px solid #842029;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    padding: .5rem 0;
+    text-align: center;
+    border-radius: 5px;
 }
