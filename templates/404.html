@@ -1,0 +1,19 @@
+{% include 'includes/header.html' %}
+{% load static%}
+<main class="main">
+    <div class="container content">
+        <div class="error-container">
+            <div class="error-img">
+                <img src="{% static 'img/404_image.png' %}" alt="">
+            </div>
+            <div class="error-content">
+                <h2 class="error-title">Ups!</h2>
+                <p class="error-text">Pagina no encontrada</p>
+                <p class="error-code">Error 404</p>
+                <a href="{% url 'home' %}" class="btn btn-primary">Regresar a inicio</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% include 'includes/footer.html' %}

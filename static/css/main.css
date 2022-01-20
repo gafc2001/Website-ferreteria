@@ -378,3 +378,35 @@ img{
     text-align: center;
     border-radius: 5px;
 }
+.error-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.error-img{
+    width:200px;
+}
+.error-content{
+    text-align:center
+}
+.error-title{
+    margin: 1rem 0;
+    font-size: 60px;
+}
+.error-text{
+    margin: 1rem 0;
+    font-size: 20px;
+}
+.error-code{
+    margin: 3rem 0;
+    font-size:80px;
+    font-weight: bold;
+}
+.btn{
+    padding:1rem 2rem;
+    background-color: #232d7b;
+    color: #fff;
+    text-align: center;
+    font-size:30px;
+    border-radius:30px
+}

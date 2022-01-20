@@ -7,14 +7,14 @@ from django.contrib.auth.hashers import make_password
 from pedido.models import *
 import json
 import random
-
+from django.contrib.auth.decorators import login_required
 
 def home(request):
 
     productos = Producto.objects.all()
     return render(request, 'index.html', {'productos': productos})
 
-
+@login_required
 def listar_pedido(request):
 
     id = request.session['id']
@@ -27,7 +27,7 @@ def listar_pedido(request):
     
     return render(request, 'pedido.html', {'data': pedido, 'msg': msg})
 
-
+@login_required
 def detalles(request, id):
 
     details = Pedido_detalle.objects.filter(id_pedido_id=id)
@@ -37,7 +37,7 @@ def detalles(request, id):
 
     return render(request, 'detalles.html', {'details': details, 'pedido': pedido})
 
-
+@login_required
 def compra(request):
     respuesta = request.POST
 
@@ -65,7 +65,7 @@ def compra(request):
 
     return render(request, 'compra.html', {'pedidos': pedidos, 'strPedidos': formatPedidos, 'total': total})
 
-
+@login_required
 def envio(request):
     respuesta = request.POST
     data = respuesta['data'].replace("\'", '\"')
@@ -116,10 +116,6 @@ def procesarLogin(request):
         return render(request, 'login.html', {'mensaje': 'Credenciales inválidas'})
 
 
-def chatView(request):
-    return render(chatView, 'chat.html')
-
-
 def registrarUsuarioView(request):
     return render(request, 'registroUsuario.html')
 
@@ -143,10 +139,13 @@ def registrarUsuario(request):
     else:
         return render(request, 'registroUsuario.html', {'mensaje': 'Error al registrar'})
 
-
+@login_required
 def close_session(request, msg):
     if(msg == 'close'):
         del request.session['id']
         del request.session['username']
         del request.session['nombre']
         return redirect('home')
+
+def handle_404_error(request,exception):
+    return render(request, '404.html')

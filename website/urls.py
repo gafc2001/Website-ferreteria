@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pedido import views
-
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,14 +24,14 @@ urlpatterns = [
     path('pedido/',views.listar_pedido,name='pedido'),
     path('pedido/detalles/<int:id>',views.detalles, name='detalles'),
     path('',views.home,name='home'),
-    path('',views.home,name='home'),
     path('compra/',views.compra,name='compra'),
     path('envio/',views.envio,name='envio'),
 
     path('wlogin/', views.iniciarSesionView, name='wlogin'),
     path('wregistrarUsuario/', views.registrarUsuarioView, name='wregistrarUsuario'),
     path('registrarUsuario/', views.registrarUsuario, name='registrarUsuario'),
-    path('login/', views.procesarLogin, name='login'), 
-    path('chat/', views.chatView, name='chat'), 
-    path('<str:msg>',views.close_session,name='close'),
+    path('login/', views.procesarLogin, name='login'),
+    path('signout/<str:msg>',views.close_session,name='close'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = 'pedido.views.handle_404_error'
