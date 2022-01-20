@@ -5,6 +5,7 @@
         <div class="container content order-content ">
             <h2>Mis pedidos</h2>
             <ul class="order-list">
+                
                 {% if data%}
                     {% for item in data%}
                         <li class="order-item">
@@ -21,8 +22,7 @@
                         </li>
                     {% endfor%}
                 {% else %}
-                    {{data}}
-                    <h3>{{msg}}</h3>
+                    <h3>No tienes pedidos aún, compra con nosotros ahora!</h3>
                 {% endif %}
             </ul>
         </div>

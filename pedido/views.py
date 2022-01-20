@@ -23,7 +23,8 @@ def listar_pedido(request):
     try:
         pedido = Pedidos.objects.filter(id_usuario_id=id)
     except:
-        msg = "No tienes pedidos aún, compra con nosotros Yaaaa!"
+        msg = "No tienes pedidos aún, compra con nosotros ahora!"
+    
     return render(request, 'pedido.html', {'data': pedido, 'msg': msg})
 
 
