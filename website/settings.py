@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'proyecto_tienda',
+        'NAME': 'ferreteria',
         'USER' : 'root',
         'PASSWORD': '',
         'HOST' : 'localhost',
