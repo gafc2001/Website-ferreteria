@@ -1,6 +1,6 @@
 from pedido import models
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, response
 from django.contrib.auth.hashers import make_password
@@ -111,6 +111,7 @@ def procesarLogin(request):
         request.session['id'] = user.id
         request.session['username'] = user.username
         request.session['nombre'] = user.first_name
+        login(request,user)
         return redirect('home')
     else:
         return render(request, 'login.html', {'mensaje': 'Credenciales inválidas'})
@@ -129,11 +130,12 @@ def registrarUsuario(request):
 
     user = User.objects.create(
         username=usuario, email=correo, password=make_password(password), first_name=nombre)
-
+    
     if (user is not None):
         request.session['id'] = user.id
         request.session['username'] = user.username
         request.session['nombre'] = user.first_name
+        login(request,user)
         return redirect('home')
 
     else:
@@ -145,6 +147,7 @@ def close_session(request, msg):
         del request.session['id']
         del request.session['username']
         del request.session['nombre']
+        logout(request)
         return redirect('home')
 
 def handle_404_error(request,exception):

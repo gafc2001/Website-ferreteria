@@ -5,7 +5,7 @@
       <div class="detail-content">
 
          <h2>Iniciar Sesión</h2>
-         <form action="{% url 'login'%}" method="POST" class="form">
+         <form action="{% url 'login' %}" method="POST" class="form">
             {% csrf_token %}
             <div class="campo">  
                <label for="txtUsuario">Usuario</label> 

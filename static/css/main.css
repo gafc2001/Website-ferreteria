@@ -16,6 +16,7 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-top: 5rem;
 }
 h1,h2,h3,h4,h5{
     margin: 0;
@@ -48,7 +49,8 @@ img{
 /*========== Header ============*/
 .main-header{
     background-color: rgb(253, 183, 0);
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 2;
     color:#232d7b;

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +31,6 @@ DEBUG = eval(os.getenv("DEBUG"))
 ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = 'wlogin'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -128,7 +128,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join('static _files')
+STATIC_ROOT = os.path.join('static_files')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [

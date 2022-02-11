@@ -23,25 +23,25 @@
                 </div>
                 <div>
                     <ul class="header-options">
-                        {% if request.session.id%}
-                        {% if request.path == '/'%}
-                        <li class="cart-icon button" id="cart-icon"><i class="fas fa-shopping-cart"></i> Carrito <p
-                                class="total" id="total"></p>
-                        </li>
-                        {% endif %}
-                        <a href="{% url 'pedido' %}">
-                            <li class="button"><i class="fas fa-shopping-bag"></i> Mis compras</li>
-                        </a>
-                        <a href="{% url 'close' msg='close' %}">
-                            <li class="button"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</li>
-                        </a>
+                        {% if request.user.is_authenticated %}
+                            {% if request.path == '/'%}
+                            <li class="cart-icon button" id="cart-icon"><i class="fas fa-shopping-cart"></i> Carrito <p
+                                    class="total" id="total"></p>
+                            </li>
+                            {% endif %}
+                            <a href="{% url 'pedido' %}">
+                                <li class="button"><i class="fas fa-shopping-bag"></i> Mis compras</li>
+                            </a>
+                            <a href="{% url 'close' msg='close' %}">
+                                <li class="button"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</li>
+                            </a>
                         {% else %}
-                        <a href="{% url 'wlogin' %}">
-                            <li class="button"><i class="fas fa-user"></i>  Iniciar sesion</li>
-                        </a>
-                        <a href="{% url 'wregistrarUsuario' %}">
-                            <li class="button"><i class="fas fa-user-plus"></i> Registrarme</li>
-                        </a>
+                            <a href="{% url 'wlogin' %}">
+                                <li class="button"><i class="fas fa-user"></i>  Iniciar sesion</li>
+                            </a>
+                            <a href="{% url 'wregistrarUsuario' %}">
+                                <li class="button"><i class="fas fa-user-plus"></i> Registrarme</li>
+                            </a>
                         {% endif%}
 
                     </ul>
